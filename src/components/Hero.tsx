@@ -48,23 +48,34 @@ const Hero = () => {
       <div className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-full bg-accent/10 blur-3xl animate-float" style={{ animationDelay: "1.5s" }} />
 
       <div className="relative z-10 text-center px-6">
+        {/* Greeting */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="font-mono text-primary text-sm mb-4 tracking-widest uppercase"
+          transition={{ delay: 0.1 }}
+          className="font-mono text-sm text-muted-foreground mb-2 tracking-wide"
         >
-          Welcome to my portfolio
+          👋 Hello, welcome to my portfolio
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="font-mono text-primary text-base mb-6 tracking-widest uppercase"
+        >
+          I'm <span className="text-foreground font-semibold">Your Name</span>
         </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.7 }}
+          transition={{ delay: 0.5, duration: 0.7 }}
           className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-glow"
         >
-          <span className="text-foreground">I'm a </span>
           <span className="gradient-text">Developer</span>
+          <span className="text-foreground"> & </span>
+          <span className="gradient-text">Engineer</span>
         </motion.h1>
 
         <motion.div
@@ -92,10 +103,10 @@ const Hero = () => {
             View Projects
           </a>
           <a
-            href="#contact"
+            href="#about"
             className="px-8 py-3 rounded-lg glass text-foreground font-semibold hover:border-primary/50 transition-all duration-300 hover:scale-105"
           >
-            Contact Me
+            About Me
           </a>
         </motion.div>
       </div>
@@ -107,7 +118,7 @@ const Hero = () => {
         transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <a href="#projects" className="text-muted-foreground hover:text-primary transition-colors">
+        <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
           <ChevronDown size={28} className="animate-float" />
         </a>
       </motion.div>
