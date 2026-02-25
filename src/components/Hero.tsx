@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import ParticleBackground from "./ParticleBackground";
 
@@ -40,24 +40,24 @@ const Hero = () => {
     >
       {/* Background image */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background" />
+        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
       </div>
 
       {/* 3D Particle layer */}
       <ParticleBackground />
 
       {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/5 blur-3xl animate-float" />
-      <div className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-full bg-accent/10 blur-3xl animate-float" style={{ animationDelay: "1.5s" }} />
+      <div className="absolute top-1/4 left-1/4 w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-primary/5 blur-3xl animate-float" />
+      <div className="absolute bottom-1/3 right-1/4 w-32 sm:w-48 h-32 sm:h-48 rounded-full bg-accent/10 blur-3xl animate-float" style={{ animationDelay: "1.5s" }} />
 
-      <div className="relative z-10 text-center px-6">
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
         {/* Greeting */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="font-mono text-sm text-muted-foreground mb-2 tracking-wide"
+          className="font-mono text-xs sm:text-sm text-muted-foreground mb-2 tracking-wide"
         >
           👋 Hello, welcome to my portfolio
         </motion.p>
@@ -66,7 +66,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="font-mono text-primary text-base mb-6 tracking-widest uppercase"
+          className="font-mono text-primary text-sm sm:text-base mb-4 sm:mb-6 tracking-widest uppercase"
         >
           I'm <span className="text-foreground font-semibold">Your Name</span>
         </motion.p>
@@ -75,7 +75,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7 }}
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-glow"
+          className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 text-glow"
         >
           <span className="gradient-text">Developer</span>
           <span className="text-foreground"> & </span>
@@ -86,9 +86,9 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="h-8 mb-10"
+          className="h-7 sm:h-8 mb-8 sm:mb-10"
         >
-          <span className="font-mono text-lg md:text-xl text-muted-foreground">
+          <span className="font-mono text-base sm:text-lg md:text-xl text-muted-foreground">
             {displayed}
           </span>
           <span className="border-r-2 border-primary ml-0.5 animate-typing-cursor">&nbsp;</span>
@@ -98,17 +98,18 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
         >
           <a
             href="#projects"
-            className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:glow-md transition-all duration-300 hover:scale-105"
+            className="group flex items-center gap-2 px-7 sm:px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:glow-md transition-all duration-300 hover:scale-105 text-sm sm:text-base"
           >
             View Projects
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </a>
           <a
             href="#about"
-            className="px-8 py-3 rounded-lg glass text-foreground font-semibold hover:border-primary/50 transition-all duration-300 hover:scale-105"
+            className="px-7 sm:px-8 py-3 rounded-lg glass text-foreground font-semibold hover:border-primary/50 transition-all duration-300 hover:scale-105 text-sm sm:text-base"
           >
             About Me
           </a>
@@ -120,10 +121,10 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2"
       >
         <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
-          <ChevronDown size={28} className="animate-float" />
+          <ChevronDown size={24} className="animate-float" />
         </a>
       </motion.div>
     </section>
