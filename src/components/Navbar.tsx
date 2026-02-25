@@ -10,6 +10,8 @@ const navItems = [
   { label: "Internships", href: "#internships" },
   { label: "Certificates", href: "#certificates" },
   { label: "Resume", href: "#resume" },
+  { label: "Articles", href: "#articles" },
+  { label: "Coding", href: "#coding" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -21,8 +23,7 @@ const Navbar = () => {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
-      // Track active section
-      const sections = navItems.map(i => i.href.slice(1));
+      const sections = navItems.map((i) => i.href.slice(1));
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
         if (el && el.getBoundingClientRect().top <= 120) {
@@ -34,6 +35,12 @@ const Navbar = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Lock body scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
   return (
     <motion.nav
@@ -50,15 +57,13 @@ const Navbar = () => {
         </a>
 
         {/* Desktop */}
-        <ul className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <ul className="hidden xl:flex items-center gap-5 2xl:gap-7">
           {navItems.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className={`font-mono text-xs xl:text-sm transition-colors duration-200 relative ${
-                  activeSection === item.href
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-primary"
+                className={`font-mono text-xs transition-colors duration-200 relative ${
+                  activeSection === item.href ? "text-primary" : "text-muted-foreground hover:text-primary"
                 }`}
               >
                 {item.label}
@@ -75,36 +80,34 @@ const Navbar = () => {
         </ul>
 
         {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-foreground p-1"
-        >
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="xl:hidden text-foreground p-1">
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile fullscreen menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden glass border-t border-border"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="xl:hidden fixed inset-0 top-[52px] bg-background/95 backdrop-blur-xl z-40"
           >
-            <ul className="flex flex-col items-center gap-3 py-5">
+            <ul className="flex flex-col items-center justify-center gap-5 h-full">
               {navItems.map((item, i) => (
                 <motion.li
                   key={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ delay: i * 0.04 }}
                 >
                   <a
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`font-mono text-sm transition-colors ${
-                      activeSection === item.href ? "text-primary" : "text-muted-foreground hover:text-primary"
+                    className={`font-heading text-xl sm:text-2xl font-semibold transition-colors ${
+                      activeSection === item.href ? "text-primary" : "text-foreground hover:text-primary"
                     }`}
                   >
                     {item.label}
