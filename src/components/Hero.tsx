@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import HeroScene from "./HeroScene";
 import ParticleBackground from "./ParticleBackground";
 
 const roles = [
@@ -38,18 +38,26 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
-      </div>
+      {/* Dark gradient base */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
 
-      {/* 3D Particle layer */}
+      {/* Animated gradient orbs */}
+      <motion.div
+        animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0], scale: [1, 1.2, 0.9, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-1/4 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] rounded-full bg-primary/8 blur-[120px]"
+      />
+      <motion.div
+        animate={{ x: [0, -30, 40, 0], y: [0, 40, -20, 0], scale: [1, 0.8, 1.3, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-1/3 right-1/4 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] rounded-full bg-accent/8 blur-[100px]"
+      />
+
+      {/* Canvas particle layer */}
       <ParticleBackground />
 
-      {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-primary/5 blur-3xl animate-float" />
-      <div className="absolute bottom-1/3 right-1/4 w-32 sm:w-48 h-32 sm:h-48 rounded-full bg-accent/10 blur-3xl animate-float" style={{ animationDelay: "1.5s" }} />
+      {/* Three.js 3D scene */}
+      <HeroScene />
 
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
         {/* Greeting */}
@@ -102,10 +110,17 @@ const Hero = () => {
         >
           <a
             href="#projects"
-            className="group flex items-center gap-2 px-7 sm:px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:glow-md transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+            className="group relative flex items-center gap-2 px-7 sm:px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:glow-md transition-all duration-300 hover:scale-105 text-sm sm:text-base overflow-hidden"
           >
-            View Projects
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
+              animate={{ x: ["-100%", "200%"] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
+            />
+            <span className="relative flex items-center gap-2">
+              View Projects
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </span>
           </a>
           <a
             href="#about"

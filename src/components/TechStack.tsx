@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import SectionHeading from "./SectionHeading";
+import FloatingScene from "./FloatingScene";
 
 const techStack = [
   {
@@ -70,13 +71,34 @@ const techStack = [
   },
 ];
 
+const TiltGroup = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-100, 100], [5, -5]);
+  const rotateY = useTransform(x, [-100, 100], [-5, 5]);
+
+  return (
+    <motion.div
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        x.set(e.clientX - rect.left - rect.width / 2);
+        y.set(e.clientY - rect.top - rect.height / 2);
+      }}
+      onMouseLeave={() => { x.set(0); y.set(0); }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 const TechStack = () => (
-  <section id="techstack" className="py-24 px-4 sm:px-6">
-    <div className="container mx-auto max-w-6xl">
-      <SectionHeading
-        title="Tech Stack"
-        subtitle="Technologies and tools I work with daily."
-      />
+  <section id="techstack" className="relative py-24 px-4 sm:px-6 overflow-hidden">
+    <FloatingScene variant="primary" density="medium" />
+
+    <div className="container mx-auto max-w-6xl relative z-10">
+      <SectionHeading title="Tech Stack" subtitle="Technologies and tools I work with daily." />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {techStack.map((group, gi) => (
@@ -86,37 +108,40 @@ const TechStack = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: gi * 0.08, duration: 0.5 }}
-            whileHover={{ y: -4 }}
-            className="glass rounded-xl p-5 md:p-6 group hover:glow-sm transition-shadow duration-300"
           >
-            <h3 className="font-heading text-xs sm:text-sm font-semibold text-primary mb-5 uppercase tracking-wider">
-              {group.category}
-            </h3>
-            <div className="grid grid-cols-3 gap-3">
-              {group.items.map((item, ii) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, scale: 0.7 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: gi * 0.04 + ii * 0.05, duration: 0.35 }}
-                  whileHover={{ scale: 1.15, y: -4, rotateZ: 2 }}
-                  className="flex flex-col items-center gap-2 p-2.5 rounded-lg bg-secondary/50 hover:bg-primary/10 cursor-default transition-colors duration-200 group/item"
-                >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
-                    <img
-                      src={item.logo}
-                      alt={item.name}
-                      className="w-full h-full object-contain drop-shadow-[0_0_6px_hsl(var(--primary)/0.3)] group-hover/item:drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)] transition-all duration-300"
-                      loading="lazy"
-                    />
-                  </div>
-                  <span className="text-[10px] sm:text-xs font-mono text-muted-foreground group-hover/item:text-primary transition-colors text-center leading-tight">
-                    {item.name}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
+            <TiltGroup className="glass rounded-xl p-5 md:p-6 group hover:glow-sm transition-shadow duration-300 relative overflow-hidden h-full">
+              {/* Hover gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:to-accent/3 transition-all duration-500" />
+
+              <h3 className="relative font-heading text-xs sm:text-sm font-semibold text-primary mb-5 uppercase tracking-wider">
+                {group.category}
+              </h3>
+              <div className="relative grid grid-cols-3 gap-3">
+                {group.items.map((item, ii) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: gi * 0.04 + ii * 0.05, duration: 0.35 }}
+                    whileHover={{ scale: 1.2, y: -6, rotateZ: 3 }}
+                    className="flex flex-col items-center gap-2 p-2.5 rounded-lg bg-secondary/50 hover:bg-primary/10 cursor-default transition-colors duration-200 group/item hover:shadow-[0_0_20px_-5px_hsl(185_100%_50%/0.3)]"
+                  >
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
+                      <img
+                        src={item.logo}
+                        alt={item.name}
+                        className="w-full h-full object-contain drop-shadow-[0_0_6px_hsl(185_100%_50%/0.3)] group-hover/item:drop-shadow-[0_0_15px_hsl(185_100%_50%/0.6)] transition-all duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                    <span className="text-[10px] sm:text-xs font-mono text-muted-foreground group-hover/item:text-primary transition-colors text-center leading-tight">
+                      {item.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </TiltGroup>
           </motion.div>
         ))}
       </div>

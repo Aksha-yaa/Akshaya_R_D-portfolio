@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { Code2, Shield, Palette, Server } from "lucide-react";
 import SectionHeading from "./SectionHeading";
+import FloatingScene from "./FloatingScene";
 
 const highlights = [
   {
@@ -28,8 +29,10 @@ const highlights = [
 const TiltCard = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [8, -8]);
-  const rotateY = useTransform(x, [-100, 100], [-8, 8]);
+  const rotateX = useTransform(y, [-100, 100], [10, -10]);
+  const rotateY = useTransform(x, [-100, 100], [-10, 10]);
+  const glowX = useTransform(x, [-100, 100], [0, 100]);
+  const glowY = useTransform(y, [-100, 100], [0, 100]);
 
   const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -39,7 +42,11 @@ const TiltCard = ({ children, className }: { children: React.ReactNode; classNam
 
   return (
     <motion.div
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
       onMouseMove={handleMouse}
       onMouseLeave={() => { x.set(0); y.set(0); }}
       className={className}
@@ -50,8 +57,10 @@ const TiltCard = ({ children, className }: { children: React.ReactNode; classNam
 };
 
 const About = () => (
-  <section id="about" className="py-24 px-4 sm:px-6">
-    <div className="container mx-auto max-w-6xl">
+  <section id="about" className="relative py-24 px-4 sm:px-6 overflow-hidden">
+    <FloatingScene variant="mixed" density="low" />
+
+    <div className="container mx-auto max-w-6xl relative z-10">
       <SectionHeading
         title="About Me"
         subtitle="A passionate engineer driven by curiosity and clean code."
@@ -103,9 +112,15 @@ const About = () => (
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="glass rounded-xl p-6 sm:p-8 space-y-6"
+          className="glass rounded-xl p-6 sm:p-8 space-y-6 relative overflow-hidden"
         >
-          <div className="grid grid-cols-2 gap-4 sm:gap-6">
+          {/* Shimmer */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent"
+            animate={{ x: ["-100%", "200%"] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "linear", repeatDelay: 4 }}
+          />
+          <div className="relative grid grid-cols-2 gap-4 sm:gap-6">
             {[
               { value: "3+", label: "Years Experience" },
               { value: "15+", label: "Projects Built" },
@@ -114,23 +129,23 @@ const About = () => (
             ].map((stat) => (
               <motion.div
                 key={stat.label}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.08, y: -2 }}
                 className="text-center p-3 rounded-lg hover:bg-secondary/50 transition-colors"
               >
-                <p className="font-heading text-2xl sm:text-3xl font-bold text-primary">{stat.value}</p>
+                <p className="font-heading text-2xl sm:text-3xl font-bold text-primary text-glow">{stat.value}</p>
                 <p className="font-mono text-[10px] sm:text-xs text-muted-foreground mt-1">{stat.label}</p>
               </motion.div>
             ))}
           </div>
 
-          <div className="border-t border-border pt-5">
+          <div className="relative border-t border-border pt-5">
             <p className="font-mono text-xs text-muted-foreground mb-2">Currently focused on</p>
             <div className="flex flex-wrap gap-2">
               {["Cloud Security", "React Ecosystem", "System Design", "AI/ML"].map((tag) => (
                 <motion.span
                   key={tag}
-                  whileHover={{ scale: 1.08, y: -2 }}
-                  className="px-3 py-1 rounded-full bg-secondary text-xs font-mono text-primary cursor-default"
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  className="px-3 py-1 rounded-full bg-secondary text-xs font-mono text-primary cursor-default hover:glow-sm transition-shadow"
                 >
                   {tag}
                 </motion.span>
@@ -150,14 +165,22 @@ const About = () => (
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
           >
-            <TiltCard className="glass rounded-xl p-4 sm:p-6 text-center group hover:glow-sm transition-shadow duration-300 cursor-default perspective-1000">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all">
-                <item.icon className="text-primary" size={20} />
+            <TiltCard className="glass rounded-xl p-4 sm:p-6 text-center group hover:glow-sm transition-shadow duration-300 cursor-default perspective-1000 relative overflow-hidden">
+              {/* Hover glow overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:to-accent/5 transition-all duration-500" />
+              <div className="relative">
+                <motion.div
+                  whileHover={{ rotateY: 180, scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all"
+                >
+                  <item.icon className="text-primary" size={20} />
+                </motion.div>
+                <h3 className="font-heading text-xs sm:text-sm font-semibold text-foreground mb-1 sm:mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground text-[10px] sm:text-xs leading-relaxed">{item.description}</p>
               </div>
-              <h3 className="font-heading text-xs sm:text-sm font-semibold text-foreground mb-1 sm:mb-2">
-                {item.title}
-              </h3>
-              <p className="text-muted-foreground text-[10px] sm:text-xs leading-relaxed">{item.description}</p>
             </TiltCard>
           </motion.div>
         ))}
