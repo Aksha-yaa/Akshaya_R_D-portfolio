@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { Code2, Shield, Palette, Server } from "lucide-react";
 import SectionHeading from "./SectionHeading";
+import profileImg from "@/assets/profile.png";
 
 const highlights = [
   {
@@ -57,7 +58,25 @@ const About = () => (
         subtitle="A passionate engineer driven by curiosity and clean code."
       />
 
-      <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-16">
+      <div className="grid md:grid-cols-[auto_1fr] lg:grid-cols-[auto_1fr_1fr] gap-8 md:gap-12 items-start mb-16">
+        {/* Profile Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, type: "spring" }}
+          className="flex justify-center md:justify-start md:col-span-1"
+        >
+          <div className="relative group">
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary via-accent to-primary opacity-60 blur-md group-hover:opacity-100 transition-opacity duration-500" />
+            <img
+              src={profileImg}
+              alt="Profile photo"
+              className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-2xl object-cover object-top border-2 border-border"
+            />
+          </div>
+        </motion.div>
+
         {/* Bio */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
