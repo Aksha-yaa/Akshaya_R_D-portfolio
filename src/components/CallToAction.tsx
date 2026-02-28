@@ -62,39 +62,7 @@ const CallToAction = () => (
           Whether you need a secure application, a beautiful interface, or a complete engineering solution — I'm ready to bring your vision to life.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          {/* Primary CTA with glow */}
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="group relative px-8 py-4 rounded-xl bg-primary text-primary-foreground font-heading font-semibold text-base sm:text-lg overflow-hidden"
-          >
-            {/* Animated glow ring */}
-            <motion.div
-              className="absolute inset-0 rounded-xl"
-              animate={{
-                boxShadow: [
-                  "0 0 20px 0px hsl(185 100% 50% / 0.3)",
-                  "0 0 40px 8px hsl(185 100% 50% / 0.5)",
-                  "0 0 20px 0px hsl(185 100% 50% / 0.3)",
-                ],
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            />
-            {/* Shimmer sweep */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-              animate={{ x: ["-100%", "200%"] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
-            />
-            <span className="relative flex items-center gap-2">
-              <Sparkles size={18} />
-              Hire Me
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </span>
-          </motion.a>
-
+        <div className="flex items-center justify-center">
           <motion.a
             href="#projects"
             whileHover={{ scale: 1.05 }}
