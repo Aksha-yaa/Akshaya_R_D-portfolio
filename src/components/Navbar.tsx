@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -17,7 +16,6 @@ const navItems = [
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("#home");
 
   useEffect(() => {
@@ -36,12 +34,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu open
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
-
   return (
     <motion.nav
       initial={{ y: -80 }}
@@ -52,17 +44,17 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
-        <a href="#home" className="font-heading text-lg sm:text-xl font-bold gradient-text">
+        <a href="#home" className="font-heading text-lg sm:text-xl font-bold gradient-text flex-shrink-0">
           &lt;Dev /&gt;
         </a>
 
-        {/* Desktop */}
-        <ul className="hidden xl:flex items-center gap-5 2xl:gap-7">
+        {/* Horizontal scrollable nav for all screen sizes */}
+        <ul className="flex items-center gap-2 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide ml-4">
           {navItems.map((item) => (
-            <li key={item.href}>
+            <li key={item.href} className="flex-shrink-0">
               <a
                 href={item.href}
-                className={`font-mono text-xs transition-colors duration-200 relative ${
+                className={`font-mono text-[10px] sm:text-xs transition-colors duration-200 relative whitespace-nowrap ${
                   activeSection === item.href ? "text-primary" : "text-muted-foreground hover:text-primary"
                 }`}
               >
@@ -78,46 +70,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-
-        {/* Mobile toggle */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="xl:hidden text-foreground p-1">
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
-
-      {/* Mobile fullscreen menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="xl:hidden fixed inset-0 top-[52px] bg-background/95 backdrop-blur-xl z-40"
-          >
-            <ul className="flex flex-col items-center justify-center gap-5 h-full">
-              {navItems.map((item, i) => (
-                <motion.li
-                  key={item.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ delay: i * 0.04 }}
-                >
-                  <a
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={`font-heading text-xl sm:text-2xl font-semibold transition-colors ${
-                      activeSection === item.href ? "text-primary" : "text-foreground hover:text-primary"
-                    }`}
-                  >
-                    {item.label}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.nav>
   );
 };

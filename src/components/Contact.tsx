@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Send, Twitter } from "lucide-react";
+import { Mail, Linkedin, Github, Send } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const socials = [
   { icon: Mail, label: "Gmail", href: "mailto:your@email.com" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
   { icon: Github, label: "GitHub", href: "https://github.com" },
-  { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
 ];
 
 const Contact = () => (

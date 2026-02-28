@@ -22,15 +22,6 @@ const profiles = [
     link: "https://github.com",
   },
   {
-    name: "SkillRack",
-    handle: "@yourhandle",
-    stat: "Gold Badge",
-    icon: Trophy,
-    color: "from-primary/20 to-primary/5",
-    glowColor: "hover:shadow-[0_0_30px_-5px_hsl(185_100%_50%/0.4)]",
-    link: "https://skillrack.com",
-  },
-  {
     name: "HackerRank",
     handle: "@yourhandle",
     stat: "5★ Problem Solving",
