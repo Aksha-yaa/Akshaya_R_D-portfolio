@@ -4,9 +4,10 @@ import { Award, ExternalLink } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const certs = [
-  { title: "Programming in Java", issuer: "NPTEL", year: "2024", color: "from-primary to-accent" },
-  { title: "Programming using Java", issuer: "Infosys Springboard", year: "2024", color: "from-accent to-primary" },
-  { title: "Practical Cybersecurity for Practitioners", issuer: "NPTEL", year: "2024", color: "from-primary to-primary" },
+  { title: "AWS Certified Solutions Architect", issuer: "Amazon Web Services", year: "2024", color: "from-primary to-accent" },
+  { title: "CompTIA Security+", issuer: "CompTIA", year: "2024", color: "from-accent to-primary" },
+  { title: "Certified Ethical Hacker (CEH)", issuer: "EC-Council", year: "2023", color: "from-primary to-primary" },
+  { title: "Google Cybersecurity Certificate", issuer: "Google", year: "2023", color: "from-accent to-accent" },
 ];
 
 const CertCard = ({ cert, index }: { cert: typeof certs[0]; index: number }) => {

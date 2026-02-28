@@ -6,23 +6,23 @@ import profileImg from "@/assets/profile.png";
 const highlights = [
   {
     icon: Code2,
-    title: "Software Development",
-    description: "Building applications with Java, Python, and modern web technologies.",
+    title: "Software Engineering",
+    description: "Building scalable, clean-architecture applications with modern frameworks and best practices.",
   },
   {
     icon: Shield,
     title: "Cybersecurity",
-    description: "Security-first thinking, cryptographic systems, and secure software design.",
+    description: "Securing systems through threat analysis, penetration testing, and secure code practices.",
   },
   {
     icon: Palette,
-    title: "Web Technologies",
-    description: "Creating responsive interfaces with HTML, CSS, and JavaScript.",
+    title: "UI/UX Design",
+    description: "Crafting intuitive, beautiful interfaces with attention to detail and user experience.",
   },
   {
     icon: Server,
-    title: "Database & Backend",
-    description: "Data management with MySQL and building modular backend solutions.",
+    title: "Full-Stack Development",
+    description: "End-to-end development from database design to frontend delivery and deployment.",
   },
 ];
 
@@ -55,7 +55,7 @@ const About = () => (
     <div className="container mx-auto max-w-6xl">
       <SectionHeading
         title="About Me"
-        subtitle="CSE student passionate about secure software and problem solving."
+        subtitle="A passionate engineer driven by curiosity and clean code."
       />
 
       <div className="grid md:grid-cols-[auto_1fr] lg:grid-cols-[auto_1fr_1fr] gap-8 md:gap-12 items-start mb-16">
@@ -86,18 +86,18 @@ const About = () => (
           className="space-y-5"
         >
           <p className="text-foreground leading-relaxed text-base sm:text-lg">
-            Hi, I'm <span className="text-primary font-semibold">Akshaya R D</span> — a final-year
-            Computer Science Engineering student at Panimalar Engineering College, Chennai, with a
-            strong foundation in Java, Python, and web technologies.
+            Hi, I'm <span className="text-primary font-semibold">Your Name</span> — a Software
+            Development Engineer with a strong foundation in cybersecurity and a keen eye for
+            design.
           </p>
           <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-            I'm passionate about building secure, well-architected software solutions. My projects
-            range from cryptographic prescription systems to privacy-preserving healthcare data
-            platforms using steganography and encryption.
+            I specialize in building production-grade applications that are secure, performant,
+            and beautifully crafted. My work spans from developing real-time threat detection
+            systems to creating seamless user experiences.
           </p>
           <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-            I believe in clean code, security-first thinking, and continuous learning. Seeking
-            opportunities to contribute meaningfully to software development.
+            I believe that great software is where engineering excellence meets thoughtful design.
+            Every line of code should serve a purpose, and every interface should feel effortless.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
@@ -126,10 +126,10 @@ const About = () => (
         >
           <div className="grid grid-cols-2 gap-4 sm:gap-6">
             {[
-              { value: "8.8", label: "CGPA" },
-              { value: "2+", label: "Projects Built" },
-              { value: "3", label: "Certifications" },
-              { value: "2", label: "Internships" },
+              { value: "3+", label: "Years Experience" },
+              { value: "15+", label: "Projects Built" },
+              { value: "5+", label: "Certifications" },
+              { value: "10+", label: "Technologies" },
             ].map((stat) => (
               <motion.div
                 key={stat.label}
@@ -145,7 +145,7 @@ const About = () => (
           <div className="border-t border-border pt-5">
             <p className="font-mono text-xs text-muted-foreground mb-2">Currently focused on</p>
             <div className="flex flex-wrap gap-2">
-              {["Cybersecurity", "Java & Python", "Web Development", "Problem Solving"].map((tag) => (
+              {["Cloud Security", "React Ecosystem", "System Design", "AI/ML"].map((tag) => (
                 <motion.span
                   key={tag}
                   whileHover={{ scale: 1.08, y: -2 }}

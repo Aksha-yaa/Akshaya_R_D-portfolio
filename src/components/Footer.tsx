@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Heart } from "lucide-react";
+import { Github, Linkedin, Twitter, Youtube, Instagram, Heart } from "lucide-react";
 
 const socials = [
-  { icon: Github, label: "GitHub", href: "https://github.com/Aksha-yaa", color: "hover:text-[#f0f6fc]" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/akshaya-r-d", color: "hover:text-[#0a66c2]" },
+  { icon: Github, label: "GitHub", href: "https://github.com", color: "hover:text-[#f0f6fc]" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", color: "hover:text-[#0a66c2]" },
+  { icon: Twitter, label: "Twitter", href: "https://twitter.com", color: "hover:text-[#1d9bf0]" },
+  { icon: Youtube, label: "YouTube", href: "https://youtube.com", color: "hover:text-[#ff0000]" },
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com", color: "hover:text-[#e4405f]" },
 ];
 
 const Footer = () => (
@@ -43,7 +46,7 @@ const Footer = () => (
         viewport={{ once: true }}
         className="text-center font-mono text-xs sm:text-sm text-muted-foreground"
       >
-        © {new Date().getFullYear()} Akshaya R D — Built with{" "}
+        © {new Date().getFullYear()} — Designed & Built with{" "}
         <motion.span
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 1.5, repeat: Infinity }}
