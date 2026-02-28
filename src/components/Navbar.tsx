@@ -45,7 +45,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
         <a href="#home" className="font-heading text-lg sm:text-xl font-bold gradient-text flex-shrink-0">
-          &lt;Dev /&gt;
+          Akshaya
         </a>
 
         {/* Horizontal scrollable nav for all screen sizes */}

@@ -3,9 +3,9 @@ import { Mail, Linkedin, Github, Send } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const socials = [
-  { icon: Mail, label: "Gmail", href: "mailto:your@email.com" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-  { icon: Github, label: "GitHub", href: "https://github.com" },
+  { icon: Mail, label: "Gmail", href: "mailto:akshayaravi021@gmail.com" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/akshaya-r-d" },
+  { icon: Github, label: "GitHub", href: "https://github.com/Aksha-yaa" },
 ];
 
 const Contact = () => (

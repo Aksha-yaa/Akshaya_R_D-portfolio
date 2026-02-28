@@ -6,8 +6,8 @@ import ParticleBackground from "./ParticleBackground";
 
 const roles = [
   "Software Development Engineer",
-  "Cybersecurity Engineer",
-  "UI/UX Enthusiast",
+  "Cybersecurity Enthusiast",
+  "Problem Solver",
 ];
 
 const Hero = () => {
@@ -68,7 +68,7 @@ const Hero = () => {
           transition={{ delay: 0.3 }}
           className="font-mono text-primary text-sm sm:text-base mb-4 sm:mb-6 tracking-widest uppercase"
         >
-          I'm <span className="text-foreground font-semibold">Your Name</span>
+          I'm <span className="text-foreground font-semibold">Akshaya R D</span>
         </motion.p>
 
         <motion.h1
