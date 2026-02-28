@@ -36,7 +36,7 @@ export default {
   				'monospace'
   			],
   			sans: [
-  				'Space Grotesk',
+  				'Inter',
   				'ui-sans-serif',
   				'system-ui',
   				'-apple-system',
@@ -143,7 +143,7 @@ export default {
   					opacity: '1'
   				}
   			},
-  			'float': {
+  			float: {
   				'0%, 100%': {
   					transform: 'translateY(0px)'
   				},
@@ -165,7 +165,7 @@ export default {
   			'accordion-up': 'accordion-up 0.2s ease-out',
   			'fade-up': 'fade-up 0.6s ease-out forwards',
   			'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
-  			'float': 'float 3s ease-in-out infinite',
+  			float: 'float 3s ease-in-out infinite',
   			'typing-cursor': 'typing-cursor 1s step-end infinite'
   		},
   		boxShadow: {
