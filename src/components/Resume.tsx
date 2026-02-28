@@ -1,12 +1,9 @@
 import { motion } from "framer-motion";
 import { FileDown, Eye, Sparkles } from "lucide-react";
 import SectionHeading from "./SectionHeading";
-import FloatingScene from "./FloatingScene";
 
 const Resume = () => (
   <section id="resume" className="relative py-24 px-4 sm:px-6 overflow-hidden">
-    <FloatingScene variant="primary" density="low" />
-
     {/* Animated background orb */}
     <motion.div
       animate={{ scale: [1, 1.15, 1], opacity: [0.05, 0.1, 0.05] }}
@@ -15,17 +12,19 @@ const Resume = () => (
     />
 
     <div className="relative z-10 container mx-auto max-w-3xl">
-      <SectionHeading title="Resume" subtitle="Download or preview my professional resume." />
+      <SectionHeading
+        title="Resume"
+        subtitle="Download or preview my professional resume."
+      />
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.92, rotateX: 10 }}
-        whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+        initial={{ opacity: 0, scale: 0.92 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, type: "spring", stiffness: 120 }}
-        style={{ perspective: 1000 }}
         className="glass rounded-2xl p-8 sm:p-10 text-center relative overflow-hidden"
       >
-        {/* Shimmer */}
+        {/* Shimmer effect */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent"
           animate={{ x: ["-100%", "200%"] }}
@@ -33,8 +32,8 @@ const Resume = () => (
         />
 
         <motion.div
-          initial={{ scale: 0, rotateZ: -90 }}
-          whileInView={{ scale: 1, rotateZ: 0 }}
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
           className="relative w-16 h-16 mx-auto mb-6"
@@ -62,17 +61,10 @@ const Resume = () => (
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:glow-md transition-all w-full sm:w-auto justify-center relative overflow-hidden"
+            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:glow-md transition-all w-full sm:w-auto justify-center"
           >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
-              animate={{ x: ["-100%", "200%"] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 3 }}
-            />
-            <span className="relative flex items-center gap-2">
-              <FileDown size={18} />
-              Download PDF
-            </span>
+            <FileDown size={18} />
+            Download PDF
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}

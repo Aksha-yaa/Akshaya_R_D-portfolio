@@ -2,18 +2,20 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Youtube, Instagram, Heart } from "lucide-react";
 
 const socials = [
-  { icon: Github, label: "GitHub", href: "https://github.com", color: "hover:text-foreground" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", color: "hover:text-primary" },
-  { icon: Twitter, label: "Twitter", href: "https://twitter.com", color: "hover:text-primary" },
-  { icon: Youtube, label: "YouTube", href: "https://youtube.com", color: "hover:text-destructive" },
-  { icon: Instagram, label: "Instagram", href: "https://instagram.com", color: "hover:text-accent" },
+  { icon: Github, label: "GitHub", href: "https://github.com", color: "hover:text-[#f0f6fc]" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", color: "hover:text-[#0a66c2]" },
+  { icon: Twitter, label: "Twitter", href: "https://twitter.com", color: "hover:text-[#1d9bf0]" },
+  { icon: Youtube, label: "YouTube", href: "https://youtube.com", color: "hover:text-[#ff0000]" },
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com", color: "hover:text-[#e4405f]" },
 ];
 
 const Footer = () => (
   <footer className="relative border-t border-border py-12 sm:py-16 px-4 sm:px-6 overflow-hidden">
+    {/* Subtle gradient glow */}
     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-primary/5 blur-[120px] pointer-events-none" />
 
     <div className="relative z-10 container mx-auto max-w-4xl">
+      {/* Social icons */}
       <div className="flex items-center justify-center gap-4 sm:gap-5 mb-8">
         {socials.map(({ icon: Icon, label, href, color }, i) => (
           <motion.a
@@ -34,8 +36,10 @@ const Footer = () => (
         ))}
       </div>
 
+      {/* Divider */}
       <div className="w-24 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent mx-auto mb-6" />
 
+      {/* Attribution */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

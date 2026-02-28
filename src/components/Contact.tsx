@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, Send, Twitter } from "lucide-react";
 import SectionHeading from "./SectionHeading";
-import FloatingScene from "./FloatingScene";
 
 const socials = [
   { icon: Mail, label: "Gmail", href: "mailto:your@email.com" },
@@ -11,11 +10,12 @@ const socials = [
 ];
 
 const Contact = () => (
-  <section id="contact" className="relative py-24 px-4 sm:px-6 overflow-hidden">
-    <FloatingScene variant="mixed" density="medium" />
-
-    <div className="container mx-auto max-w-4xl relative z-10">
-      <SectionHeading title="Contact" subtitle="Let's connect and build something remarkable." />
+  <section id="contact" className="py-24 px-4 sm:px-6">
+    <div className="container mx-auto max-w-4xl">
+      <SectionHeading
+        title="Contact"
+        subtitle="Let's connect and build something remarkable."
+      />
 
       <div className="grid md:grid-cols-2 gap-8 md:gap-10">
         {/* Social links */}
@@ -42,7 +42,7 @@ const Contact = () => (
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -6, scale: 1.15, rotate: [0, -8, 8, 0] }}
+                whileHover={{ y: -4, scale: 1.1 }}
                 className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl glass flex items-center justify-center text-muted-foreground hover:text-primary hover:glow-sm transition-all duration-300"
                 title={label}
               >
@@ -58,46 +58,32 @@ const Contact = () => (
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="glass rounded-xl p-5 sm:p-6 space-y-3 sm:space-y-4 relative overflow-hidden"
+          className="glass rounded-xl p-5 sm:p-6 space-y-3 sm:space-y-4"
           onSubmit={(e) => e.preventDefault()}
         >
-          {/* Shimmer */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent"
-            animate={{ x: ["-100%", "200%"] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "linear", repeatDelay: 4 }}
-          />
-
           <input
             type="text"
             placeholder="Your Name"
-            className="relative w-full px-4 py-2.5 sm:py-3 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none focus:glow-sm transition-all font-mono text-sm"
+            className="w-full px-4 py-2.5 sm:py-3 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none focus:glow-sm transition-all font-mono text-sm"
           />
           <input
             type="email"
             placeholder="Your Email"
-            className="relative w-full px-4 py-2.5 sm:py-3 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none focus:glow-sm transition-all font-mono text-sm"
+            className="w-full px-4 py-2.5 sm:py-3 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none focus:glow-sm transition-all font-mono text-sm"
           />
           <textarea
             rows={4}
             placeholder="Your Message"
-            className="relative w-full px-4 py-2.5 sm:py-3 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none focus:glow-sm transition-all font-mono text-sm resize-none"
+            className="w-full px-4 py-2.5 sm:py-3 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none focus:glow-sm transition-all font-mono text-sm resize-none"
           />
           <motion.button
             type="submit"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="relative flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:glow-md transition-all w-full justify-center text-sm sm:text-base overflow-hidden"
+            className="flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:glow-md transition-all w-full justify-center text-sm sm:text-base"
           >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
-              animate={{ x: ["-100%", "200%"] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 3 }}
-            />
-            <span className="relative flex items-center gap-2">
-              <Send size={16} />
-              Send Message
-            </span>
+            <Send size={16} />
+            Send Message
           </motion.button>
         </motion.form>
       </div>
