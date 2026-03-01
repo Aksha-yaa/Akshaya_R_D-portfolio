@@ -3,7 +3,7 @@ import SectionHeading from "./SectionHeading";
 
 const techStack = [
   {
-    category: "Languages",
+    category: "Programming",
     items: [
       { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
       { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
@@ -14,29 +14,25 @@ const techStack = [
     ],
   },
   {
-    category: "Frontend",
-    items: [
-      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-      { name: "Tailwind", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-      { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-      { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
-      { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
-    ],
-  },
-  {
     category: "Backend",
     items: [
       { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
       { name: "Express", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
       { name: "FastAPI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
       { name: "Django", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" },
+      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+    ],
+  },
+  {
+    category: "Databases",
+    items: [
       { name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
       { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
     ],
   },
   {
-    category: "DevOps & Cloud",
+    category: "DevOps",
     items: [
       { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
       { name: "AWS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" },
@@ -47,7 +43,7 @@ const techStack = [
     ],
   },
   {
-    category: "Cybersecurity",
+    category: "Security",
     items: [
       { name: "Burp Suite", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
       { name: "Wireshark", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
@@ -57,64 +53,42 @@ const techStack = [
       { name: "Metasploit", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
     ],
   },
-  {
-    category: "Tools",
-    items: [
-      { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-      { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
-      { name: "Postman", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
-      { name: "Jira", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" },
-      { name: "Notion", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg" },
-      { name: "Bash", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" },
-    ],
-  },
 ];
 
 const TechStack = () => (
-  <section id="techstack" className="py-24 px-4 sm:px-6">
-    <div className="container mx-auto max-w-6xl">
+  <section id="techstack" className="py-20 md:py-28 px-4 sm:px-6">
+    <div className="container mx-auto max-w-5xl">
       <SectionHeading
         title="Tech Stack"
         subtitle="Technologies and tools I work with daily."
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div className="space-y-10">
         {techStack.map((group, gi) => (
           <motion.div
             key={group.category}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: gi * 0.08, duration: 0.5 }}
-            whileHover={{ y: -4 }}
-            className="glass rounded-xl p-5 md:p-6 group hover:glow-sm transition-shadow duration-300"
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ delay: gi * 0.05, duration: 0.25 }}
           >
-            <h3 className="font-heading text-xs sm:text-sm font-semibold text-primary mb-5 uppercase tracking-wider">
+            <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
               {group.category}
             </h3>
-            <div className="grid grid-cols-3 gap-3">
-              {group.items.map((item, ii) => (
-                <motion.div
+            <div className="flex flex-wrap gap-3">
+              {group.items.map((item) => (
+                <div
                   key={item.name}
-                  initial={{ opacity: 0, scale: 0.7 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: gi * 0.04 + ii * 0.05, duration: 0.35 }}
-                  whileHover={{ scale: 1.15, y: -4, rotateZ: 2 }}
-                  className="flex flex-col items-center gap-2 p-2.5 rounded-lg bg-secondary/50 hover:bg-primary/10 cursor-default transition-colors duration-200 group/item"
+                  className="flex items-center gap-2.5 px-3 py-2 rounded-md border border-border bg-card hover:border-muted-foreground/20 transition-colors"
                 >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
-                    <img
-                      src={item.logo}
-                      alt={item.name}
-                      className="w-full h-full object-contain drop-shadow-[0_0_6px_hsl(var(--primary)/0.3)] group-hover/item:drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)] transition-all duration-300"
-                      loading="lazy"
-                    />
-                  </div>
-                  <span className="text-[10px] sm:text-xs font-mono text-muted-foreground group-hover/item:text-primary transition-colors text-center leading-tight">
-                    {item.name}
-                  </span>
-                </motion.div>
+                  <img
+                    src={item.logo}
+                    alt={item.name}
+                    className="w-5 h-5 object-contain"
+                    loading="lazy"
+                  />
+                  <span className="text-sm text-foreground">{item.name}</span>
+                </div>
               ))}
             </div>
           </motion.div>

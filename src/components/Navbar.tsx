@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -17,6 +17,7 @@ const navItems = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("#home");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -35,43 +36,66 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass glow-sm" : "bg-transparent"
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        scrolled ? "bg-background/90 backdrop-blur-sm border-b border-border" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
-        <a href="#home" className="font-heading text-lg sm:text-xl font-bold gradient-text flex-shrink-0">
+      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3.5">
+        <a href="#home" className="text-lg font-semibold text-foreground tracking-tight">
           &lt;Dev /&gt;
         </a>
 
-        {/* Horizontal scrollable nav for all screen sizes */}
-        <ul className="flex items-center gap-2 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide ml-4">
+        {/* Desktop nav */}
+        <ul className="hidden lg:flex items-center gap-6">
           {navItems.map((item) => (
-            <li key={item.href} className="flex-shrink-0">
+            <li key={item.href}>
               <a
                 href={item.href}
-                className={`font-mono text-[10px] sm:text-xs transition-colors duration-200 relative whitespace-nowrap ${
-                  activeSection === item.href ? "text-primary" : "text-muted-foreground hover:text-primary"
+                className={`text-sm transition-colors duration-150 ${
+                  activeSection === item.href
+                    ? "text-primary font-medium"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {item.label}
-                {activeSection === item.href && (
-                  <motion.div
-                    layoutId="nav-underline"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
               </a>
             </li>
           ))}
         </ul>
+
+        {/* Mobile toggle */}
+        <button
+          className="lg:hidden text-muted-foreground hover:text-foreground"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
-    </motion.nav>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="lg:hidden bg-background/95 backdrop-blur-sm border-b border-border px-4 pb-4">
+          <ul className="flex flex-col gap-1">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`block py-2 text-sm ${
+                    activeSection === item.href
+                      ? "text-primary font-medium"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </nav>
   );
 };
 
