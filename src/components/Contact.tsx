@@ -58,17 +58,17 @@ const Contact = () => (
           <input
             type="text"
             placeholder="Your Name"
-            className="w-full px-3.5 py-2.5 rounded-md bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none transition-colors text-sm"
+            className="w-full px-3.5 py-2.5 rounded-md bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all duration-200 text-sm"
           />
           <input
             type="email"
             placeholder="Your Email"
-            className="w-full px-3.5 py-2.5 rounded-md bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none transition-colors text-sm"
+            className="w-full px-3.5 py-2.5 rounded-md bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all duration-200 text-sm"
           />
           <textarea
             rows={4}
             placeholder="Your Message"
-            className="w-full px-3.5 py-2.5 rounded-md bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none transition-colors text-sm resize-none"
+            className="w-full px-3.5 py-2.5 rounded-md bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all duration-200 text-sm resize-none"
           />
           <button
             type="submit"

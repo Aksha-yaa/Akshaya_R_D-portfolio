@@ -1,30 +1,49 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import SectionHeading from "./SectionHeading";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const profiles = [
   {
     name: "LeetCode",
     handle: "@yourhandle",
-    stat: "500+ Problems Solved",
+    statNum: 500,
+    statSuffix: "+",
+    statLabel: "Problems Solved",
     focus: "Arrays, Trees, DP, Graphs",
     link: "https://leetcode.com",
   },
   {
     name: "GitHub",
     handle: "@yourhandle",
-    stat: "200+ Contributions",
+    statNum: 200,
+    statSuffix: "+",
+    statLabel: "Contributions",
     focus: "Open Source, Side Projects",
     link: "https://github.com",
   },
   {
     name: "HackerRank",
     handle: "@yourhandle",
-    stat: "5★ Problem Solving",
+    statNum: 5,
+    statSuffix: "★",
+    statLabel: "Problem Solving",
     focus: "Algorithms, Data Structures",
     link: "https://hackerrank.com",
   },
 ];
+
+const StatCounter = ({ num, suffix, label }: { num: number; suffix: string; label: string }) => {
+  const { count, ref } = useCountUp(num);
+  return (
+    <div ref={ref}>
+      <p className="text-2xl font-semibold text-primary tabular-nums">
+        {count}{suffix}
+      </p>
+      <p className="text-xs text-muted-foreground mt-0.5">{label}</p>
+    </div>
+  );
+};
 
 const CodingProfiles = () => (
   <section id="coding" className="py-20 md:py-28 px-4 sm:px-6">
@@ -51,9 +70,9 @@ const CodingProfiles = () => (
               <h3 className="text-base font-semibold text-foreground">{profile.name}</h3>
               <ExternalLink size={14} className="text-muted-foreground" />
             </div>
-            <p className="text-xs text-muted-foreground font-mono mb-1">{profile.handle}</p>
-            <p className="text-sm text-primary font-medium mb-2">{profile.stat}</p>
-            <p className="text-xs text-muted-foreground">DSA Focus: {profile.focus}</p>
+            <p className="text-xs text-muted-foreground font-mono mb-3">{profile.handle}</p>
+            <StatCounter num={profile.statNum} suffix={profile.statSuffix} label={profile.statLabel} />
+            <p className="text-xs text-muted-foreground mt-3">DSA Focus: {profile.focus}</p>
           </motion.a>
         ))}
       </div>

@@ -1,5 +1,8 @@
+import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
+
+const WireframeSphere = lazy(() => import("./WireframeSphere"));
 
 const Hero = () => (
   <section
@@ -14,6 +17,11 @@ const Hero = () => (
         backgroundSize: "60px 60px",
       }}
     />
+
+    {/* 3D Wireframe Sphere */}
+    <Suspense fallback={null}>
+      <WireframeSphere />
+    </Suspense>
 
     <div className="relative z-10 max-w-3xl mx-auto">
       <motion.p

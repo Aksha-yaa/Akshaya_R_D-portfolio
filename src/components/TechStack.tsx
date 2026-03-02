@@ -79,15 +79,18 @@ const TechStack = () => (
               {group.items.map((item) => (
                 <div
                   key={item.name}
-                  className="flex items-center gap-2.5 px-3 py-2 rounded-md border border-border bg-card hover:border-muted-foreground/20 transition-colors"
+                  className="group flex items-center gap-2.5 px-3 py-2 rounded-md border border-border bg-card hover:border-muted-foreground/20 transition-all duration-200"
                 >
                   <img
                     src={item.logo}
                     alt={item.name}
-                    className="w-5 h-5 object-contain"
+                    className="w-5 h-5 object-contain transition-transform duration-200 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <span className="text-sm text-foreground">{item.name}</span>
+                  <span className="text-sm text-foreground relative">
+                    {item.name}
+                    <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-primary transition-all duration-200 group-hover:w-full" />
+                  </span>
                 </div>
               ))}
             </div>
