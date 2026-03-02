@@ -16,7 +16,7 @@ const Contact = () => (
         subtitle="Let's connect and build something remarkable."
       />
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {/* Info */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}

@@ -75,17 +75,17 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-background/95 backdrop-blur-sm border-b border-border px-4 pb-4">
-          <ul className="flex flex-col gap-1">
+        <div className="lg:hidden bg-background/95 backdrop-blur-sm border-b border-border px-4 pb-4 max-h-[70vh] overflow-y-auto">
+          <ul className="flex flex-col gap-0.5">
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`block py-2 text-sm ${
+                  className={`block py-2.5 px-2 rounded-md text-sm transition-colors ${
                     activeSection === item.href
-                      ? "text-primary font-medium"
-                      : "text-muted-foreground"
+                      ? "text-primary font-medium bg-secondary/50"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {item.label}
