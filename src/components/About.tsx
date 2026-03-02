@@ -10,7 +10,7 @@ const About = () => (
         subtitle="A passionate engineer driven by curiosity and clean code."
       />
 
-      <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-8 md:gap-14 items-center">
         {/* Text */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -70,13 +70,13 @@ const About = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.3, delay: 0.08 }}
-          className="flex justify-center order-1 md:order-2"
+          className="flex items-center justify-center order-1 md:order-2"
         >
-          <div className="w-48 h-56 sm:w-56 sm:h-64 md:w-60 md:h-72 rounded-[50%] overflow-hidden border-2 border-border bg-secondary">
+          <div className="w-44 h-52 sm:w-52 sm:h-60 md:w-56 md:h-64 rounded-[50%] overflow-hidden border-2 border-border bg-secondary mx-auto">
             <img
               src={profileImg}
               alt="Profile photo"
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-center"
               loading="lazy"
             />
           </div>
