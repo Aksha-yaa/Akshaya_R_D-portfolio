@@ -3,7 +3,7 @@ import SectionHeading from "./SectionHeading";
 import profileImg from "@/assets/profile.png";
 
 const About = () => (
-  <section id="about" className="py-20 md:py-28 px-4 sm:px-6">
+  <section id="about" className="py-20 md:py-28 px-4 sm:px-6 bg-secondary/30">
     <div className="container mx-auto max-w-5xl">
       <SectionHeading
         title="About Me"

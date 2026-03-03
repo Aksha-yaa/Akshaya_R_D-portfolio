@@ -10,7 +10,6 @@ import Resume from "@/components/Resume";
 import FeaturedArticles from "@/components/FeaturedArticles";
 import CodingProfiles from "@/components/CodingProfiles";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 
 const Index = () => (
@@ -28,7 +27,6 @@ const Index = () => (
     <FeaturedArticles />
     <CodingProfiles />
     <Contact />
-    <Footer />
   </div>
 );
 

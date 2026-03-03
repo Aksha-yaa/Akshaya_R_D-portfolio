@@ -9,7 +9,7 @@ const socials = [
 ];
 
 const Contact = () => (
-  <section id="contact" className="py-20 md:py-28 px-4 sm:px-6">
+  <section id="contact" className="py-20 md:py-28 px-4 sm:px-6 bg-secondary/30">
     <div className="container mx-auto max-w-4xl">
       <SectionHeading
         title="Contact"
