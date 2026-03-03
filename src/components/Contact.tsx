@@ -3,9 +3,9 @@ import { Mail, Linkedin, Github, Send } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const socials = [
-  { icon: Mail, label: "Email", href: "mailto:your@email.com" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-  { icon: Github, label: "GitHub", href: "https://github.com" },
+  { icon: Mail, label: "Email", href: "mailto:akshayaravi021@gmail.com", external: false },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/akshaya-r-d", external: true },
+  { icon: Github, label: "GitHub", href: "https://github.com/Aksha-yaa", external: true },
 ];
 
 const Contact = () => (
@@ -31,12 +31,11 @@ const Contact = () => (
           </p>
 
           <div className="flex gap-3">
-            {socials.map(({ icon: Icon, label, href }) => (
+            {socials.map(({ icon: Icon, label, href, external }) => (
               <a
                 key={label}
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="w-10 h-10 rounded-md border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-muted-foreground/30 transition-colors"
                 title={label}
               >

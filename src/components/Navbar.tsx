@@ -43,7 +43,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3.5">
         <a href="#home" className="text-lg font-semibold text-foreground tracking-tight">
-          &lt;Dev /&gt;
+          Akshaya R D
         </a>
 
         {/* Desktop nav */}

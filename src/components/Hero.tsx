@@ -30,7 +30,7 @@ const Hero = () => (
         transition={{ duration: 0.3 }}
         className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 font-mono"
       >
-        Software Engineer · Security Specialist
+        Software Developer · Security-Focused · Cloud Enthusiast
       </motion.p>
 
       <motion.h1
@@ -40,7 +40,7 @@ const Hero = () => (
         className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight leading-[1.1] mb-4 sm:mb-6"
       >
         Building Secure &<br />
-        <span className="text-primary">Scalable Systems</span>
+        <span className="text-primary">Scalable Software Systems</span>
       </motion.h1>
 
       <motion.p
@@ -49,8 +49,8 @@ const Hero = () => (
         transition={{ duration: 0.3, delay: 0.16 }}
         className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mx-auto md:mx-0 mb-8 sm:mb-10 leading-relaxed"
       >
-        I design and build production-grade applications with a focus on security,
-        performance, and clean architecture.
+        I design and develop structured applications with a focus on clean architecture,
+        security-first thinking, and cloud-ready deployment.
       </motion.p>
 
       <motion.div
@@ -67,7 +67,8 @@ const Hero = () => (
           <ArrowRight size={16} />
         </a>
         <a
-          href="#resume"
+          href="/Resume_Akshaya_R_D.docx"
+          download
           className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md border border-border text-foreground text-sm font-medium hover:bg-secondary transition-colors"
         >
           <Download size={16} />

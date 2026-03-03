@@ -22,14 +22,14 @@ const Resume = () => (
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <button className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-all duration-200 relative overflow-hidden">
+          <a
+            href="/Resume_Akshaya_R_D.docx"
+            download
+            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-all duration-200 relative overflow-hidden"
+          >
             <FileDown size={16} />
-            Download PDF
-          </button>
-          <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-border text-foreground text-sm font-medium hover:bg-secondary hover:border-muted-foreground/20 transition-all duration-200">
-            <Eye size={16} />
-            Preview
-          </button>
+            Download Resume
+          </a>
         </div>
       </motion.div>
     </div>

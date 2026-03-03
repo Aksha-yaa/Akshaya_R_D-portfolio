@@ -3,10 +3,13 @@ import { Award } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const certs = [
-  { title: "AWS Certified Solutions Architect", issuer: "Amazon Web Services", year: "2024" },
-  { title: "CompTIA Security+", issuer: "CompTIA", year: "2024" },
-  { title: "Certified Ethical Hacker (CEH)", issuer: "EC-Council", year: "2023" },
-  { title: "Google Cybersecurity Certificate", issuer: "Google", year: "2023" },
+  { title: "Oracle Cloud Infrastructure 2025 Certified Foundations Associate", issuer: "Oracle" },
+  { title: "Practical Cybersecurity for Cybersecurity Practitioners", issuer: "NPTEL" },
+  { title: "Programming in Java", issuer: "NPTEL" },
+  { title: "Programming Using Java", issuer: "Infosys Springboard" },
+  { title: "Python Certification", issuer: "Kaggle" },
+  { title: "UiPath Automation Developer Associate Training", issuer: "UiPath" },
+  { title: "Acquiring Data", issuer: "Accenture (NASSCOM)" },
 ];
 
 const Certificates = () => (
@@ -14,7 +17,7 @@ const Certificates = () => (
     <div className="container mx-auto max-w-4xl">
       <SectionHeading
         title="Certificates"
-        subtitle="Professional certifications validating expertise."
+        subtitle="Professional certifications and completed courses."
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -32,9 +35,7 @@ const Certificates = () => (
             </div>
             <div>
               <h3 className="text-sm font-medium text-foreground leading-snug">{cert.title}</h3>
-              <p className="text-xs text-muted-foreground mt-0.5">
-                {cert.issuer} · {cert.year}
-              </p>
+              <p className="text-xs text-muted-foreground mt-0.5">{cert.issuer}</p>
             </div>
           </motion.div>
         ))}
