@@ -27,7 +27,6 @@ const Index = () => (
     <FeaturedArticles />
     <CodingProfiles />
     <Contact />
-    <Footer />
   </div>
 );
 

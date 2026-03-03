@@ -56,7 +56,7 @@ const techStack = [
 ];
 
 const TechStack = () => (
-  <section id="techstack" className="py-20 md:py-28 px-4 sm:px-6">
+  <section id="techstack" className="py-20 md:py-28 px-4 sm:px-6 bg-secondary/30">
     <div className="container mx-auto max-w-5xl">
       <SectionHeading
         title="Tech Stack"
