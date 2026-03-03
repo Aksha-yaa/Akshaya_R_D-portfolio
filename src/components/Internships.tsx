@@ -4,31 +4,31 @@ import SectionHeading from "./SectionHeading";
 
 const internships = [
   {
-    role: "Software Development Intern",
-    company: "Company Name",
-    location: "City, Country",
-    period: "Jun 2024 – Aug 2024",
-    description:
-      "Developed microservices architecture using Node.js and Docker. Improved API response times by 40% through query optimization and caching strategies.",
-    tech: ["Node.js", "Docker", "PostgreSQL", "Redis"],
-  },
-  {
     role: "Cybersecurity Intern",
-    company: "Company Name",
-    location: "City, Country",
-    period: "Jan 2024 – May 2024",
+    company: "Edunet Foundation",
+    location: "",
+    period: "May 2025 – Jun 2025",
     description:
-      "Conducted vulnerability assessments and penetration testing on enterprise applications. Identified and documented 15+ critical security vulnerabilities.",
-    tech: ["Burp Suite", "Python", "OWASP", "Nmap"],
+      "Studied cybersecurity fundamentals and secure system architecture. Learned cryptographic validation mechanisms. Applied security-first engineering principles.",
+    tech: ["Cryptography Fundamentals", "Secure Architecture Principles"],
   },
   {
-    role: "Frontend Developer Intern",
-    company: "Company Name",
-    location: "Remote",
-    period: "Jun 2023 – Aug 2023",
+    role: "Python Intern",
+    company: "Vault of Codes",
+    location: "",
+    period: "Sep 2024 – Oct 2024",
     description:
-      "Built responsive web interfaces using React and Tailwind CSS. Implemented accessibility standards achieving WCAG 2.1 AA compliance.",
-    tech: ["React", "TypeScript", "Tailwind CSS", "Figma"],
+      "Developed modular Python applications. Worked on automation-based problem solving. Strengthened debugging and structured coding practices.",
+    tech: ["Python"],
+  },
+  {
+    role: "Java Intern",
+    company: "InternPe",
+    location: "",
+    period: "Aug 2024 – Sep 2024",
+    description:
+      "Developed Java-based application modules. Strengthened object-oriented programming concepts. Practiced structured backend logic implementation.",
+    tech: ["Java", "MySQL"],
   },
 ];
 
@@ -66,10 +66,12 @@ const Internships = () => (
                     <Calendar size={12} />
                     {intern.period}
                   </span>
-                  <span className="flex items-center gap-1">
-                    <MapPin size={12} />
-                    {intern.location}
-                  </span>
+                  {intern.location && (
+                    <span className="flex items-center gap-1">
+                      <MapPin size={12} />
+                      {intern.location}
+                    </span>
+                  )}
                 </div>
 
                 <p className="text-sm text-muted-foreground leading-relaxed mb-3">

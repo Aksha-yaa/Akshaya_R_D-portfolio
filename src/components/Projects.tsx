@@ -1,51 +1,39 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, X } from "lucide-react";
+import { Github, X } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import { useMouseTilt } from "@/hooks/useMouseTilt";
 
 const projects = [
   {
-    title: "Real-Time Intrusion Detection System",
-    summary: "Network traffic analysis engine using ML for real-time threat detection.",
+    title: "CuraTrace – Secure Medicine Access & Counterfeit Detection System",
+    summary: "A secure prescription validation system designed to prevent prescription forgery and reduce counterfeit medicine risks using cryptographic integrity mechanisms.",
     highlights: [
-      "Processes 10K+ packets/sec with custom pipeline",
-      "LSTM-based anomaly detection on 40+ flow features",
-      "Sub-second response time for threat alerts",
-      "Deep packet inspection with live dashboard",
+      "Implemented SHA-256 hashing for prescription data integrity",
+      "Designed Merkle Tree-based verification structure",
+      "Built permission-controlled validation workflow",
+      "Structured secure backend validation pipeline",
+      "Integrated controlled access mechanisms",
     ],
-    tech: ["Python", "TensorFlow", "Flask", "React", "WebSocket"],
-    github: "#",
-    demo: "#",
-    details: "Built a full network traffic analysis pipeline that captures, processes, and classifies packets in real-time. The system uses a custom LSTM model trained on 40+ flow features to detect anomalies with 96% accuracy. Includes a React-based dashboard with WebSocket updates for live threat monitoring.",
-  },
-  {
-    title: "Secure File Sharing Platform",
-    summary: "End-to-end encrypted file sharing with zero-knowledge architecture.",
-    highlights: [
-      "AES-256-GCM client-side encryption",
-      "Diffie-Hellman key exchange for peer connections",
-      "Server never accesses unencrypted data",
-      "Audit logging and access control",
-    ],
-    tech: ["TypeScript", "Node.js", "React", "PostgreSQL", "Crypto"],
-    github: "#",
-    demo: "#",
-    details: "Designed a zero-knowledge file sharing platform where encryption and decryption happen entirely on the client. The server stores only encrypted blobs and never has access to plaintext data. Features include Diffie-Hellman key exchange, comprehensive audit logging, and granular access controls.",
-  },
-  {
-    title: "AI Phishing URL Detector",
-    summary: "Browser extension that identifies phishing attempts with 97% accuracy.",
-    highlights: [
-      "Gradient-boosted model on 100K+ labeled URLs",
-      "Lexical analysis + WHOIS + SSL validation",
-      "Chrome extension for real-time URL scanning",
-      "Page content similarity scoring",
-    ],
-    tech: ["Python", "Scikit-learn", "Chrome API", "FastAPI", "React"],
-    github: "#",
+    tech: ["Java", "Python", "MySQL", "SHA-256", "Merkle Tree", "RBAC"],
+    github: "https://github.com/Aksha-yaa/CuraTrace",
     demo: null,
-    details: "Developed a machine learning pipeline that analyzes URLs using lexical features, WHOIS data, and SSL certificate validation. The gradient-boosted model achieves 97% accuracy on a dataset of 100K+ labeled URLs. Deployed as a Chrome extension with a FastAPI backend for real-time scanning.",
+    details: "Built a secure, QR-coded digital prescription system to prevent prescription forgery and counterfeit medicines. Implemented cryptographic hashing (SHA-256) and Merkle Tree-based batch verification for authenticity validation. Built a permissioned ledger architecture for real-time counterfeit detection with controlled access mechanisms.",
+  },
+  {
+    title: "StegoMed – Privacy-Preserving Mental Health Record System",
+    summary: "A dual-layer secure healthcare system protecting sensitive mental health records using encryption and steganography techniques.",
+    highlights: [
+      "Applied AES encryption for secure data storage",
+      "Implemented LSB-based image steganography",
+      "Built offline Python-based application",
+      "Designed controlled access logic",
+      "Ensured confidentiality and integrity of medical records",
+    ],
+    tech: ["Python", "AES Encryption", "LSB Steganography", "MySQL"],
+    github: "https://github.com/Aksha-yaa/StegoMed",
+    demo: null,
+    details: "Developed a privacy-preserving healthcare data system using AES encryption and LSB-based image steganography. Ensured dual-layer security by encrypting sensitive medical data before embedding it within medical reports. Built a fully offline Python application to maintain confidentiality, integrity, and controlled access to patient records.",
   },
 ];
 
@@ -105,22 +93,14 @@ const ProjectCard = ({
       <div className="flex items-center gap-3 text-muted-foreground">
         <a
           href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
           className="hover:text-foreground transition-colors"
           title="GitHub"
         >
           <Github size={16} />
         </a>
-        {project.demo && (
-          <a
-            href={project.demo}
-            onClick={(e) => e.stopPropagation()}
-            className="hover:text-foreground transition-colors"
-            title="Live Demo"
-          >
-            <ExternalLink size={16} />
-          </a>
-        )}
       </div>
     </motion.div>
   );
@@ -186,20 +166,13 @@ const ProjectModal = ({
       <div className="flex items-center gap-3">
         <a
           href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border text-foreground text-sm hover:bg-secondary transition-colors"
         >
           <Github size={14} />
           Source Code
         </a>
-        {project.demo && (
-          <a
-            href={project.demo}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm hover:opacity-90 transition-opacity"
-          >
-            <ExternalLink size={14} />
-            Live Demo
-          </a>
-        )}
       </div>
     </motion.div>
   </motion.div>
@@ -213,10 +186,10 @@ const Projects = () => {
       <div className="container mx-auto max-w-5xl">
         <SectionHeading
           title="Projects"
-          subtitle="Production-level systems showcasing security, performance, and clean architecture."
+          subtitle="Secure, structured systems built with real-world application focus."
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {projects.map((project, i) => (
             <ProjectCard
               key={project.title}
